@@ -78,12 +78,15 @@ class ViewController: UIViewController {
         let rNum = Int.random(in: 1..<101)
         var decision: choice
         if rNum <= 34{
+            print("rock")
             decision = .rock
             compRock += 1
         } else if rNum <= 67{
+            print("paper")
             decision = .paper
             compPaper += 1
         } else {
+            print("scissors")
             decision = .scissors
             compScissors += 1
         }
@@ -162,25 +165,15 @@ class ViewController: UIViewController {
             print("won")
             wins+=1
             p2Label.text = "Your wins = \(wins)"
-            if wins == games{
-                p1InstructionLabel.text = "Game over, Player wins!"
-                p1Label.text = "Game over, Player wins!"
-                p2Label.text = "Game over, Player wins!"
-                p2InstructionLabel.text = "Game over, Player wins!"
-            }
-            if compWins == games{
-                p1InstructionLabel.text = "Game over, Computer wins!"
-                p1Label.text = "Game over, Computer wins!"
-                p2Label.text = "Game over, Computer wins!"
-                p2InstructionLabel.text = "Game over, Computer wins!"
-            }
+            checkGames()
         } else if winning() == .loss{
             print("lost")
             compWins+=1
             p1Label.text = "Computer wins = \(compWins)"
             checkGames()
         } else {
-            print("tie")
+            p1StatusLabel.text = "Tie"
+            p2StatusLabel.text = "Tie"
         }
     }
     @IBAction func paperAction(_ sender: UIButton) {
@@ -190,24 +183,15 @@ class ViewController: UIViewController {
             print("won")
             wins+=1
             p2Label.text = "Your wins: \(wins)"
-            if wins == games{
-                p1InstructionLabel.text = "Game over, Player wins!"
-                p1Label.text = "Game over, Player wins!"
-                p2Label.text = "Game over, Player wins!"
-                p2InstructionLabel.text = "Game over, Player wins!"
-            }
+            checkGames()
         } else if winning() == .loss{
             print("lost")
             compWins+=1
-            p1Label.text = "You've won \(compWins) times"
-            if compWins == games{
-                p1InstructionLabel.text = "Game over, Computer wins!"
-                p1Label.text = "Game over, Computer wins!"
-                p2Label.text = "Game over, Computer wins!"
-                p2InstructionLabel.text = "Game over, Computer wins!"
-            }
+            p1Label.text = "Your wins = \(compWins)"
+            checkGames()
         } else {
-            print("tie")
+            p1StatusLabel.text = "Tie"
+            p2StatusLabel.text = "Tie"
         }
     }
     @IBAction func rockAction(_ sender: UIButton) {
@@ -217,24 +201,15 @@ class ViewController: UIViewController {
             print("won")
             wins+=1
             p2Label.text = "You've won \(wins) times"
-            if wins == games{
-                p1InstructionLabel.text = "Game over, Player wins!"
-                p1Label.text = "Game over, Player wins!"
-                p2Label.text = "Game over, Player wins!"
-                p2InstructionLabel.text = "Game over, Player wins!"
-            }
+            checkGames()
         } else if winning() == .loss{
             print("lost")
             compWins+=1
             p1Label.text = "You've won \(compWins) times"
-            if compWins == games{
-                p1InstructionLabel.text = "Game over, Computer wins!"
-                p1Label.text = "Game over, Computer wins!"
-                p2Label.text = "Game over, Computer wins!"
-                p2InstructionLabel.text = "Game over, Computer wins!"
-            }
+            checkGames()
         } else {
-            print("tie")
+            p1StatusLabel.text = "Tie"
+            p2StatusLabel.text = "Tie"
         }
     }
     
@@ -243,12 +218,19 @@ class ViewController: UIViewController {
         compWins = 0
         p1InstructionLabel.text = "First to \(games) wins"
         p2InstructionLabel.text = "First to \(games) wins"
-        p1Label
+        p1Label.text = "First to \(games) wins"
+        p2Label.text = "First to \(games) wins"
     }
     
     @IBAction func editScreenAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "editSegue", sender: self)
     }
     //class ending bracket
+    
+    
+    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
+        let svc = unwindSegue.source as! EditViewController
+        games = Int(svc.gameAmtTextField.text!)!
+    }
 }
 

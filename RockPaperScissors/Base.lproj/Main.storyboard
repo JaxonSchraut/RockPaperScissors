@@ -119,11 +119,7 @@
                                 <action selector="resetButton:" destination="BYZ-38-t0r" id="DZh-sk-jpN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Etf-CZ-7fT">
-                            <connections>
-                                <action selector="editScreenAction:" destination="BYZ-38-t0r" id="BUu-bi-9Ie"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Etf-CZ-7fT"/>
                     </navigationItem>
                     <connections>
                         <outlet property="p1InstructionLabel" destination="iUT-GZ-oRM" id="Z8x-hC-Wa0"/>
