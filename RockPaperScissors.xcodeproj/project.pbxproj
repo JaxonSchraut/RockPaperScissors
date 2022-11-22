@@ -14,6 +14,7 @@
 		89078A7C2923CC61007862C9 /* RockPaperScissors.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89078A7A2923CC61007862C9 /* RockPaperScissors.xcdatamodeld */; };
 		89078A7E2923CC62007862C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89078A7D2923CC62007862C9 /* Assets.xcassets */; };
 		89078A812923CC62007862C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89078A7F2923CC62007862C9 /* LaunchScreen.storyboard */; };
+		89215B2229251EB3002A25E5 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89215B2129251EB3002A25E5 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		89078A7D2923CC62007862C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89078A802923CC62007862C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89078A822923CC62007862C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89215B2129251EB3002A25E5 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		89078A652923CC61007862C9 = {
 			isa = PBXGroup;
 			children = (
+				89215B2129251EB3002A25E5 /* EditViewController.swift */,
 				89078A702923CC61007862C9 /* RockPaperScissors */,
 				89078A6F2923CC61007862C9 /* Products */,
 			);
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89215B2229251EB3002A25E5 /* EditViewController.swift in Sources */,
 				89078A762923CC61007862C9 /* ViewController.swift in Sources */,
 				89078A722923CC61007862C9 /* AppDelegate.swift in Sources */,
 				89078A7C2923CC61007862C9 /* RockPaperScissors.xcdatamodeld in Sources */,
