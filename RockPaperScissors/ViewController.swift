@@ -7,8 +7,8 @@
 
 import UIKit
 
-//Programming elements: variables, operators, if/else statements, Enums, 
-//UI elements: ImageViews, Labels, Buttons, ViewController, NavigationController, Constraints, Textfield
+//Programming elements: variables, operators, if/else statements, Enums, Github, functions, arrays, classes, tuples
+//UI elements: ImageViews, Labels, Buttons, ViewController, NavigationController, Constraints, TextView,
 
 class ViewController: UIViewController {
 
@@ -22,7 +22,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var p2Label: UILabel!
     @IBOutlet weak var p2StatusLabel: UILabel!
     
+    @IBOutlet weak var p2ScissorsButton: UIButton!
     
+    @IBOutlet weak var p2PaperButton: UIButton!
+    
+    @IBOutlet weak var p2RockButton: UIButton!
+    
+    
+    
+    var history = [Game]()
     
     var games = 3
     var wins = 0
@@ -30,9 +38,6 @@ class ViewController: UIViewController {
     var pScissors = 0
     var pRock = 0
     var compWins = 0
-    var compPaper = 0
-    var compRock = 0
-    var compScissors = 0
     enum choice{
         case rock
         case paper
@@ -64,12 +69,10 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editSegue"{
             let nvc = segue.destination as! EditViewController
-            nvc.compScissors = compScissors
-            nvc.compPaper = compPaper
-            nvc.compRock =  compRock
             nvc.pRock = pRock
             nvc.pPaper = pPaper
             nvc.pScissors = pScissors
+            nvc.display = history
         }
     }
     
@@ -80,15 +83,15 @@ class ViewController: UIViewController {
         if rNum <= 34{
             print("rock")
             decision = .rock
-            compRock += 1
+            
         } else if rNum <= 67{
             print("paper")
             decision = .paper
-            compPaper += 1
+
         } else {
             print("scissors")
             decision = .scissors
-            compScissors += 1
+            
         }
         return decision
     }
@@ -98,44 +101,44 @@ class ViewController: UIViewController {
         if playerChoice == .rock{
             if compDecision() == .rock{
                 won = .tie
-                p1StatusLabel.text = "Tie"
-                p2StatusLabel.text = "Tie"
+                p1StatusLabel.text = "Computer played rock and tied"
+                p2StatusLabel.text = "You played rock and tied"
             } else if compDecision() == .paper{
                 won = .loss
-                p1StatusLabel.text = "Won"
-                p2StatusLabel.text = "Lost"
+                p1StatusLabel.text = "Computer played paper and won"
+                p2StatusLabel.text = "You played rock and lost"
             } else {
                 won = .won
-                p1StatusLabel.text = "Lost"
-                p2StatusLabel.text = "Won"
+                p1StatusLabel.text = "Computer played scissors and lost"
+                p2StatusLabel.text = "You played rock and won"
             }
         } else if playerChoice == .paper{
             if compDecision() == .rock{
                 won = .won
-                p1StatusLabel.text = "Lost"
-                p2StatusLabel.text = "Won"
+                p1StatusLabel.text = "Computer played rock and lost"
+                p2StatusLabel.text = "You played paper and won"
             } else if compDecision() == .paper{
                 won = .tie
-                p1StatusLabel.text = "Tie"
-                p2StatusLabel.text = "Tie"
+                p1StatusLabel.text = "Computer played paper and tied"
+                p2StatusLabel.text = "You played paper and tied"
             } else {
                 won = .loss
-                p1StatusLabel.text = "Won"
-                p2StatusLabel.text = "Lost"
+                p1StatusLabel.text = "Computer played scissors and won"
+                p2StatusLabel.text = "You played paper and won"
             }
         } else{
             if compDecision() == .rock{
                 won = .loss
-                p1StatusLabel.text = "Won"
-                p2StatusLabel.text = "Lost"
+                p1StatusLabel.text = "Computer played rock and won"
+                p2StatusLabel.text = "You played scissors and lost"
             } else if compDecision() == .paper{
                 won = .won
-                p1StatusLabel.text = "Lost"
-                p2StatusLabel.text = "Won"
+                p1StatusLabel.text = "Computer played paper and lost"
+                p2StatusLabel.text = "You played scissors and won"
             } else {
                 won = .tie
-                p1StatusLabel.text = "Tie"
-                p2StatusLabel.text = "Tie"
+                p1StatusLabel.text = "Computer played scissors and tied"
+                p2StatusLabel.text = "You played scissors and tied"
             }
         }
         return won
@@ -143,16 +146,26 @@ class ViewController: UIViewController {
     
     func checkGames(){
         if wins == games{
+            p2RockButton.isHidden = true
+            p2PaperButton.isHidden = true
+            p2ScissorsButton.isHidden = true
+            history.append(Game(winner: "Player", loser: "Computer", score: (wins, compWins)))
             p1InstructionLabel.text = "Game over, Player wins!"
             p1Label.text = "Game over, Player wins!"
             p2Label.text = "Game over, Player wins!"
             p2InstructionLabel.text = "Game over, Player wins!"
         }
         if compWins == games{
+            p2RockButton.isHidden = true
+            p2PaperButton.isHidden = true
+            p2ScissorsButton.isHidden = true
+            history.append(Game(winner: "Computer", loser: "Player", score: (compWins,wins)))
             p1InstructionLabel.text = "Game over, Computer wins!"
             p1Label.text = "Game over, Computer wins!"
+            p1StatusLabel.text = "Status report"
             p2Label.text = "Game over, Computer wins!"
             p2InstructionLabel.text = "Game over, Computer wins!"
+            
         }
     }
     
@@ -220,17 +233,16 @@ class ViewController: UIViewController {
         p2InstructionLabel.text = "First to \(games) wins"
         p1Label.text = "First to \(games) wins"
         p2Label.text = "First to \(games) wins"
+        p2StatusLabel.text = "Status Report"
+        p1StatusLabel.text = "Status Report"
+        p2RockButton.isHidden = false
+        p2PaperButton.isHidden = false
+        p2ScissorsButton.isHidden = false
     }
     
     @IBAction func editScreenAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "editSegue", sender: self)
     }
     //class ending bracket
-    
-    
-    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
-        let svc = unwindSegue.source as! EditViewController
-        games = Int(svc.gameAmtTextField.text!)!
-    }
 }
 

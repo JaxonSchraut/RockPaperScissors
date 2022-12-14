@@ -15,6 +15,7 @@
 		89078A7E2923CC62007862C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89078A7D2923CC62007862C9 /* Assets.xcassets */; };
 		89078A812923CC62007862C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89078A7F2923CC62007862C9 /* LaunchScreen.storyboard */; };
 		89215B2229251EB3002A25E5 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89215B2129251EB3002A25E5 /* EditViewController.swift */; };
+		89459F8E294A70CB00EA57BB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89459F8D294A70CB00EA57BB /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		89078A802923CC62007862C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89078A822923CC62007862C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89215B2129251EB3002A25E5 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		89459F8D294A70CB00EA57BB /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				89078A712923CC61007862C9 /* AppDelegate.swift */,
 				89078A732923CC61007862C9 /* SceneDelegate.swift */,
 				89078A752923CC61007862C9 /* ViewController.swift */,
+				89459F8D294A70CB00EA57BB /* Game.swift */,
 				89078A772923CC61007862C9 /* Main.storyboard */,
 				89078A7D2923CC62007862C9 /* Assets.xcassets */,
 				89078A7F2923CC62007862C9 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89215B2229251EB3002A25E5 /* EditViewController.swift in Sources */,
+				89459F8E294A70CB00EA57BB /* Game.swift in Sources */,
 				89078A762923CC61007862C9 /* ViewController.swift in Sources */,
 				89078A722923CC61007862C9 /* AppDelegate.swift in Sources */,
 				89078A7C2923CC61007862C9 /* RockPaperScissors.xcdatamodeld in Sources */,
